@@ -19,6 +19,6 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 🆘🆘 NEED HELP?? Join the [Discord Server](https://discord.gg/HcnjPsWATg)
 
 ## FOLLOW ME
-Instagram: [@jacob_luetzow](https://www.instagram.com/jacob_luetzow/)
+Linktree: [@jacob_luetzow](https://linktr.ee/jacob_luetzow)
 
 Join the [Discord server](https://discord.gg/HcnjPsWATg)
