@@ -3,3 +3,33 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+@font-face {
+    font-family: "WorkSans";
+    src: url("/fonts/WorkSans-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "WorkSans";
+    src: url("/fonts/WorkSans-Bold.ttf");
+    font-weight: bold;
+    font-style: normal;
+}
+
+.round-image-padding {
+    border-radius: 50%;
+    border: 1.5px solid #FFFFFF;
+    padding: 4px;
+}
+
+.img-down-arrow::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 45%;
+    transform: translateY(-50%);
+    border-width: 3px 3px 0 3px;
+    border-color: white transparent transparent transparent;
+    border-style: solid;
+}
