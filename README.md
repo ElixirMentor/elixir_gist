@@ -1,4 +1,9 @@
-# ElixirGist
+<img align="center" src="https://assets.elixirmentor.com/bs_github_readme_banner.png"/>
+
+# GitHub Gist Clone SOLUTIONS
+Subscribe to [Backend Stuff](https://www.youtube.com/channel/UChbS_z6KHQiIu9et38O37eQ) if you're interested in learning how to build scalable, production ready APIs in Elixir and some DevOps along the way, please subscribe to my channel Backend Stuff, and start your backend development journey.
+
+You will find the solutions for [GitHub Gist Clone](https://youtube.com/playlist?list=PL2Rv8vpZJz4x1Svv79WdT0Da42kWt_hQ0) here.
 
 To start your Phoenix server:
 
@@ -7,12 +12,13 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## SUPPORT BACKEND STUFF
 
-## Learn more
+🎙🎙 Check out my podcast [Big App Energy](https://www.hiredgunapps.com/podcast)
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+🆘🆘 NEED HELP?? Join the [Discord Server](https://discord.gg/HcnjPsWATg)
+
+## FOLLOW ME
+Linktree: [@jacob_luetzow](https://linktr.ee/jacob_luetzow)
+
+Join the [Discord server](https://discord.gg/HcnjPsWATg)
