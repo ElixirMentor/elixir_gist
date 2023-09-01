@@ -18,8 +18,81 @@
     </div>
   </div>
   <div class="relative">
-    <button class="img-down-arrow" type="button" id="user-menu-button">
+    <button class="img-down-arrow" type="button" id="user-menu-button" phx-click={ElixirGistWeb.Layouts.App.toggle_dropdown_menu()}>
       <img src="/images/user-image.svg" alt="Profile Image" class="round-image-padding w-8 h-8" />
     </button>
+    <div 
+      id="dropdown_menu"
+      class="dropdown-menu-arrow absolute right-0 mt-2 py-2 w-48 bg-emDark rounded-lg shadow-xl border border-white"
+      hidden="true"
+      >
+      <%= if @current_user do %>
+        <.link 
+        href={~p"/users/settings"}
+        class="menu-item border-b border-white border-opacity-50"
+        role="menuitem"
+        tabindex="-1"
+        method="get"
+        id="user-menu-item-0"
+        > 
+          Signed in as <%= @current_user.email %>
+        </.link>
+        <.link 
+        href="#"
+        class="menu-item"
+        role="menuitem"
+        tabindex="-1"
+        method="get"
+        id="user-menu-item-1"
+        > 
+          You gists
+        </.link>
+        <.link 
+        href="#"
+        class="menu-item  border-b border-white border-opacity-50"
+        role="menuitem"
+        tabindex="-1"
+        method="get"
+        id="user-menu-item-2"
+        > 
+          Saved gists
+        </.link>
+        <.link 
+        href={~p"/users/log_out"}
+        class="menu-item"
+        role="menuitem"
+        tabindex="-1"
+        method="delete"
+        id="user-menu-item-3"
+        > 
+          Sign out
+        </.link>
+      <% else %>
+        <.link 
+        href={~p"/users/log_in"}
+        class="menu-item border-b border-white border-opacity-50"
+        role="menuitem"
+        tabindex="-1"
+        method="get"
+        id="user-menu-item-0"
+        >
+        Sign in
+        </.link>
+        <.link 
+        href={~p"/users/register"}
+        class="menu-item"
+        role="menuitem"
+        tabindex="-1"
+        method="get"
+        id="user-menu-item-1"
+        >
+        Register
+        </.link>
+      <% end %>
+    </div>
   </div>
 </header>
+<main>
+<.flash_group flash={@flash} />
+<%= @inner_content %>
+</main>
