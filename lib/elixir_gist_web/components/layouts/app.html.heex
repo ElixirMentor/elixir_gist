@@ -18,81 +18,100 @@
     </div>
   </div>
   <div class="relative">
-    <button class="img-down-arrow" type="button" id="user-menu-button" phx-click={ElixirGistWeb.Layouts.App.toggle_dropdown_menu()}>
+    <button
+      class="img-down-arrow"
+      type="button"
+      id="user-menu-button"
+      phx-click={ElixirGistWeb.Layouts.App.toggle_dropdown_menu()}
+    >
       <img src="/images/user-image.svg" alt="Profile Image" class="round-image-padding w-8 h-8" />
     </button>
-    <div 
+    <div
       id="dropdown_menu"
       class="dropdown-menu-arrow absolute right-0 mt-2 py-2 w-48 bg-emDark rounded-lg shadow-xl border border-white"
       hidden="true"
-      >
+    >
       <%= if @current_user do %>
-        <.link 
-        href={~p"/users/settings"}
-        class="menu-item border-b border-white border-opacity-50"
-        role="menuitem"
-        tabindex="-1"
-        method="get"
-        id="user-menu-item-0"
-        > 
+        <.link
+          href={~p"/users/settings"}
+          class="menu-item border-b border-white border-opacity-50"
+          role="menuitem"
+          tabindex="-1"
+          method="get"
+          id="user-menu-item-0"
+        >
           Signed in as <%= @current_user.email %>
         </.link>
-        <.link 
-        href="#"
-        class="menu-item"
-        role="menuitem"
-        tabindex="-1"
-        method="get"
-        id="user-menu-item-1"
-        > 
+        <.link
+          href="#"
+          class="menu-item"
+          role="menuitem"
+          tabindex="-1"
+          method="get"
+          id="user-menu-item-1"
+        >
           You gists
         </.link>
-        <.link 
-        href="#"
-        class="menu-item  border-b border-white border-opacity-50"
-        role="menuitem"
-        tabindex="-1"
-        method="get"
-        id="user-menu-item-2"
-        > 
+        <.link
+          href="#"
+          class="menu-item  border-b border-white border-opacity-50"
+          role="menuitem"
+          tabindex="-1"
+          method="get"
+          id="user-menu-item-2"
+        >
           Saved gists
         </.link>
-        <.link 
-        href={~p"/users/log_out"}
-        class="menu-item"
-        role="menuitem"
-        tabindex="-1"
-        method="delete"
-        id="user-menu-item-3"
-        > 
+        <.link
+          href={~p"/users/log_out"}
+          class="menu-item"
+          role="menuitem"
+          tabindex="-1"
+          method="delete"
+          id="user-menu-item-3"
+        >
           Sign out
         </.link>
       <% else %>
-        <.link 
-        href={~p"/users/log_in"}
-        class="menu-item border-b border-white border-opacity-50"
-        role="menuitem"
-        tabindex="-1"
-        method="get"
-        id="user-menu-item-0"
+        <.link
+          href={~p"/users/log_in"}
+          class="menu-item border-b border-white border-opacity-50"
+          role="menuitem"
+          tabindex="-1"
+          method="get"
+          id="user-menu-item-0"
         >
-        Sign in
+          Sign in
         </.link>
-        <.link 
-        href={~p"/users/register"}
-        class="menu-item"
-        role="menuitem"
-        tabindex="-1"
-        method="get"
-        id="user-menu-item-1"
+        <.link
+          href={~p"/users/register"}
+          class="menu-item"
+          role="menuitem"
+          tabindex="-1"
+          method="get"
+          id="user-menu-item-1"
         >
-        Register
+          Register
         </.link>
       <% end %>
     </div>
   </div>
 </header>
 <main>
-<.flash_group flash={@flash} />
-<%= @inner_content %>
+  <.flash_group flash={@flash} />
+  <%= @inner_content %>
 </main>
+<footer class="h-[120px] w-full flex justify-center text-white px-16 py-20 font-brand font-regular text-xs">
+  <div class="w-full px-10">
+    <div class="border-t-[1px] border-white w-full"></div>
+    <div class="flex items-center space-x-2 py-6">
+      <img src="/images/em-logo.svg" alt="Elixir Mentor Logo" class="h-8 w-8" />
+      <p>© 2023 Elixir Mentor</p>
+      <div class="text-emLavender-dark px-4 space-x-2">
+        <a href={~p"/"} class="hover:underline">Terms</a>
+        <a href={~p"/"} class="hover:underline">Privacy</a>
+        <a href={~p"/"} class="hover:underline">About</a>
+      </div>
+    </div>
+  </div>
+</footer>
