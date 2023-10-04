@@ -17,6 +17,54 @@
     font-style: normal;
 }
 
+.em-gradient{ 
+    background-image: linear-gradient(to bottom, #631A61, #551653, #340E33, #010101);
+    height: 225px;
+}
+
+.dropdown-menu-arrow::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: calc(95% - 12px);
+    border-width: 0 5px 5px 5px;
+    border-style: solid;
+    border-color: transparent transparent white transparent
+}
+
+.menu-item {
+    @apply block px-4 py-2 text-sm text-white font-brand font-regular
+}
+
+.menu-item:hover {
+    @apply hover:text-emDark-light
+}
+
+form input[type="text"] {
+    @apply bg-emDark-dark font-brand font-regular text-white text-xs border border-white
+}
+
+form input[type="text"]:focus {
+    @apply focus:outline-none focus:border-emLavender focus:ring-0
+}
+
+.textarea {
+    @apply bg-emDark-dark font-brand font-regular text-white text-xs border border-white h-[300px] resize-none;
+    border-top: none;
+}
+
+.textarea:focus {
+    @apply focus:outline-none focus:border-white focus:ring-0
+}
+
+.create_button {
+    @apply bg-emPurple border border-white font-brand font-regular text-black text-base
+}
+
+.create_button:hover {
+    @apply hover:bg-emPurple-dark text-emDark-light border-emDark-light
+}
+
 .round-image-padding {
     border-radius: 50%;
     border: 1.5px solid #FFFFFF;
