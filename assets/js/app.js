@@ -44,7 +44,7 @@ Hooks.UpdateLineNumbers = {
                 var start = this.el.selectionStart;
                 var end = this.el.selectionEnd;
                 this.el.value = this.el.value.substring(0, start) + "\t" + this.el.value.substring(end)
-                this.el.selectionEnd = 
+                this.el.selectionStart = this.el.selectionEnd = start + 1
             }
         })
 
