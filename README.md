@@ -1,7 +1,7 @@
-<img align="center" src="https://assets.elixirmentor.com/bs_github_readme_banner.png"/>
+<img align="center" src="https://assets.elixirmentor.com/em_banner.png"/>
 
 # GitHub Gist Clone SOLUTIONS
-Subscribe to [Backend Stuff](https://www.youtube.com/channel/UChbS_z6KHQiIu9et38O37eQ) if you're interested in learning how to build scalable, production ready APIs in Elixir and some DevOps along the way, please subscribe to my channel Backend Stuff, and start your backend development journey.
+Subscribe to [Elixir Mentor](https://www.youtube.com/channel/UChbS_z6KHQiIu9et38O37eQ) if you're interested in learning how to build scalable, production ready APIs in Elixir and some DevOps along the way, please subscribe to my channel Backend Stuff, and start your backend development journey.
 
 You will find the solutions for [GitHub Gist Clone](https://youtube.com/playlist?list=PL2Rv8vpZJz4x1Svv79WdT0Da42kWt_hQ0) here.
 
