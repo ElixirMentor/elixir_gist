@@ -12,7 +12,9 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-## SUPPORT BACKEND STUFF
+## SUPPORT ELIXIR MENTOR
+
+🌐🌐 My website [Elixir Mentor](https://elixirmentor.com/)
 
 🎙🎙 Check out my podcast [Big App Energy](https://www.hiredgunapps.com/podcast)
 
