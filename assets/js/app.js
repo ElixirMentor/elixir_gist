@@ -129,6 +129,12 @@ Hooks.CopyToClipboard = {
     }
 };
 
+Hooks.CurrentYear = {
+    mounted() {
+      this.el.textContent = new Date().getFullYear();
+    }
+};
+
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks: Hooks})
 
 // Show progress bar on live navigation and form submits
