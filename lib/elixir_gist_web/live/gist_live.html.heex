@@ -31,13 +31,26 @@
       <%= @gist.name %>
     </div>
     <div>
-      <button class="px-1" type="button" phx-click={}>
-        <img src="/images/delete.svg" alt="Delete Button" />
-      </button>
-      <button class="px-1" type="button" phx-click={}>
-        <img src="/images/edit.svg" alt="Edit Button" />
-      </button>
-      <button class="px-1" type="button" phx-click={}>
+      <%= if @current_user.id == @gist.user_id do %>
+        <button
+          class="px-1 interactive-img-btn"
+          type="button"
+          phx-click="delete"
+          phx-value-id={@gist.id}
+        >
+          <img src="/images/delete.svg" alt="Delete Button" />
+        </button>
+        <button class="px-1 interactive-img-btn" type="button" phx-click={}>
+          <img src="/images/edit.svg" alt="Edit Button" />
+        </button>
+      <% end %>
+      <button
+        id="copy-btn"
+        class="px-1 interactive-img-btn"
+        type="button"
+        phx-hook="CopyToClipboard"
+        data-clipboard-gist={@gist.markup_text}
+      >
         <img src="/images/copy.svg" alt="Copy Button" />
       </button>
     </div>
