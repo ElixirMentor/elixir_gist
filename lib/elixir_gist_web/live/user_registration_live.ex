@@ -6,19 +6,23 @@ defmodule ElixirGistWeb.UserRegistrationLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
-      <.header class="text-center">
+    <div class="em-gradient flex flex-col items-center justify-center">
+      <h1 class="font-brand font-bold text-3xl text-white py-2">
         Register for an account
-        <:subtitle>
-          Already registered?
-          <.link navigate={~p"/users/log_in"} class="font-semibold text-brand hover:underline">
-            Sign in
-          </.link>
-          to your account now.
-        </:subtitle>
-      </.header>
-
-      <.simple_form
+      </h1>
+      <h3 class="font-brand font-bold text-l text-white">
+        Already registered?
+        <.link
+          navigate={~p"/users/log_in"}
+          class="font-semibold text-brand hover:underline text-emLavender-dark"
+        >
+          Sign in
+        </.link>
+        to your account now.
+      </h3>
+    </div>
+    <div class="mx-auto max-w-sm">
+      <.form
         for={@form}
         id="registration_form"
         phx-submit="save"
@@ -31,13 +35,14 @@ defmodule ElixirGistWeb.UserRegistrationLive do
           Oops, something went wrong! Please check the errors below.
         </.error>
 
-        <.input field={@form[:email]} type="email" label="Email" required />
-        <.input field={@form[:password]} type="password" label="Password" required />
-
-        <:actions>
-          <.button phx-disable-with="Creating account..." class="w-full">Create an account</.button>
-        </:actions>
-      </.simple_form>
+        <.input field={@form[:email]} type="email" placeholder="Email" required />
+        <.input field={@form[:password]} type="password" placeholder="Password" required />
+        <div class="py-6">
+          <.button phx-disable-with="Creating account..." class="create_button w-full">
+            Create an account
+          </.button>
+        </div>
+      </.form>
     </div>
     """
   end
