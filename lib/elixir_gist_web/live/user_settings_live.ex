@@ -5,36 +5,35 @@ defmodule ElixirGistWeb.UserSettingsLive do
 
   def render(assigns) do
     ~H"""
-    <.header class="text-center">
-      Account Settings
-      <:subtitle>Manage your account email address and password settings</:subtitle>
-    </.header>
+    <div class="em-gradient flex flex-col items-center justify-center">
+      <h1 class="font-brand font-bold text-3xl text-white py-2">
+        Account Settings
+      </h1>
+      <h3 class="font-brand font-bold text-l text-white">
+        Manage your account email address and password settings
+      </h3>
+    </div>
 
-    <div class="space-y-12 divide-y">
+    <div class="mx-auto max-w-sm">
       <div>
-        <.simple_form
-          for={@email_form}
-          id="email_form"
-          phx-submit="update_email"
-          phx-change="validate_email"
-        >
-          <.input field={@email_form[:email]} type="email" label="Email" required />
+        <.form for={@email_form} id="email_form" phx-submit="update_email" phx-change="validate_email">
+          <.input field={@email_form[:email]} type="email" placeholder="Email" required />
           <.input
             field={@email_form[:current_password]}
             name="current_password"
             id="current_password_for_email"
             type="password"
-            label="Current password"
+            placeholder="Current password"
             value={@email_form_current_password}
             required
           />
-          <:actions>
-            <.button phx-disable-with="Changing...">Change Email</.button>
-          </:actions>
-        </.simple_form>
+          <div class="py-6">
+            <.button phx-disable-with="Changing..." class="create_button">Change Email</.button>
+          </div>
+        </.form>
       </div>
       <div>
-        <.simple_form
+        <.form
           for={@password_form}
           id="password_form"
           action={~p"/users/log_in?_action=password_updated"}
@@ -49,25 +48,30 @@ defmodule ElixirGistWeb.UserSettingsLive do
             id="hidden_user_email"
             value={@current_email}
           />
-          <.input field={@password_form[:password]} type="password" label="New password" required />
+          <.input
+            field={@password_form[:password]}
+            type="password"
+            placeholder="New password"
+            required
+          />
           <.input
             field={@password_form[:password_confirmation]}
             type="password"
-            label="Confirm new password"
+            placeholder="Confirm new password"
           />
           <.input
             field={@password_form[:current_password]}
             name="current_password"
             type="password"
-            label="Current password"
+            placeholder="Current password"
             id="current_password_for_password"
             value={@current_password}
             required
           />
-          <:actions>
-            <.button phx-disable-with="Changing...">Change Password</.button>
-          </:actions>
-        </.simple_form>
+          <div class="py-6">
+            <.button phx-disable-with="Changing..." class="create_button">Change Password</.button>
+          </div>
+        </.form>
       </div>
     </div>
     """

@@ -3,34 +3,38 @@ defmodule ElixirGistWeb.UserLoginLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
-      <.header class="text-center">
+    <div class="em-gradient flex flex-col items-center justify-center">
+      <h1 class="font-brand font-bold text-3xl text-white py-2">
         Sign in to account
-        <:subtitle>
-          Don't have an account?
-          <.link navigate={~p"/users/register"} class="font-semibold text-brand hover:underline">
-            Sign up
-          </.link>
-          for an account now.
-        </:subtitle>
-      </.header>
-
-      <.simple_form for={@form} id="login_form" action={~p"/users/log_in"} phx-update="ignore">
-        <.input field={@form[:email]} type="email" label="Email" required />
-        <.input field={@form[:password]} type="password" label="Password" required />
-
-        <:actions>
+      </h1>
+      <h3 class="font-brand font-bold text-l text-white">
+        Don't have an account?
+        <.link
+          navigate={~p"/users/register"}
+          class="font-semibold text-brand hover:underline text-emLavender-dark"
+        >
+          Sign up
+        </.link>
+        for an account now.
+      </h3>
+    </div>
+    <div class="mx-auto max-w-sm">
+      <.form for={@form} id="login_form" action={~p"/users/log_in"} phx-update="ignore">
+        <.input field={@form[:email]} type="email" placeholder="Email" required />
+        <.input field={@form[:password]} type="password" placeholder="Password" required />
+        <div class="flex item-scenter justify-between py-4">
           <.input field={@form[:remember_me]} type="checkbox" label="Keep me logged in" />
-          <.link href={~p"/users/reset_password"} class="text-sm font-semibold">
+          <.link
+            href={~p"/users/reset_password"}
+            class="text-m text_brand text-emDark-light font-semibold hover:underline"
+          >
             Forgot your password?
           </.link>
-        </:actions>
-        <:actions>
-          <.button phx-disable-with="Signing in..." class="w-full">
-            Sign in <span aria-hidden="true">→</span>
-          </.button>
-        </:actions>
-      </.simple_form>
+        </div>
+        <.button phx-disable-with="Signing in..." class="create_button w-full">
+          Sign in <span aria-hidden="true">→</span>
+        </.button>
+      </.form>
     </div>
     """
   end
