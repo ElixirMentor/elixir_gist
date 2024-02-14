@@ -40,12 +40,28 @@
     @apply hover:text-emDark-light
 }
 
-form input[type="text"] {
+form input[type="text"], input[type="email"], input[type="password"] {
     @apply bg-emDark-dark font-brand font-regular text-white text-xs border border-white
 }
 
-form input[type="text"]:focus {
+form input[type="text"], input[type="email"], input[type="password"]:focus {
     @apply focus:outline-none focus:border-emLavender focus:ring-0
+}
+
+.syntax-area {
+    @apply bg-emSyntax border text-xs border-white h-auto;
+    border-top: none;
+    border-left: none;
+}
+
+.syntax-numbers {
+    @apply border border-white font-brand py-[12px] text-xs text-emDark-light bg-emSyntax h-auto w-[54px] text-right overflow-hidden resize-none;
+    border-right: none;
+    border-top: none;
+}
+
+.syntax-numbers:focus {
+    @apply focus:outline-none focus:border-white focus:ring-0;
 }
 
 .textarea {
@@ -68,29 +84,13 @@ form input[type="text"]:focus {
     @apply focus:outline-none focus:border-white focus:ring-0;
 }
 
-.syntax-area {
-    @apply bg-emSyntax border text-xs border-white h-auto;
-    border-top: none;
-    border-left: none;
-}
-
-.syntax-numbers {
-    @apply border border-white font-brand py-[12px] text-xs text-emDark-light bg-emSyntax h-auto w-[54px] text-right overflow-hidden resize-none;
-    border-right: none;
-    border-top: none;
-}
-
-.syntax-numbers:focus {
-    @apply focus:outline-none focus:border-white focus:ring-0;
-}
-
 .create_button {
     @apply bg-emPurple border border-white font-brand font-regular text-black text-base
 }
 
 .create_button:hover {
     @apply hover:bg-emPurple-dark text-emDark-light border-emDark-light
-}
+} 
 
 .round-image-padding {
     border-radius: 50%;
@@ -110,9 +110,9 @@ form input[type="text"]:focus {
 }
 
 .interactive-img-btn img:hover {
-    filter: brightness(80%);
+    filter: brightness(80%); /* makes the image 20% darker */
 }
 
 .interactive-img-btn img:active {
-    transform: scale(1.1);
+    transform: scale(1.1); /* increases the size of the image by 10% */
 }
