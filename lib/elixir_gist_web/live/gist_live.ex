@@ -2,6 +2,7 @@ defmodule ElixirGistWeb.GistLive do
   use ElixirGistWeb, :live_view
 
   alias ElixirGist.Gists
+  alias ElixirGistWeb.GistFormComponent
 
   def mount(%{"id" => id}, _session, socket) do
     gist = Gists.get_gist!(id)
