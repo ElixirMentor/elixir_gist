@@ -74,13 +74,13 @@ form input[type="text"], input[type="email"], input[type="password"]:focus {
     @apply focus:outline-none focus:border-white focus:ring-0
 }
 
-#line-numbers {
+.line-numbers {
     @apply border border-white font-brand font-regular text-xs text-emDark-light bg-emDark-dark h-[300px] w-[54px] text-right overflow-hidden resize-none;
     border-right: none;
     border-top: none;
 }
 
-#line-numbers:focus {
+.line-numbers:focus {
     @apply focus:outline-none focus:border-white focus:ring-0;
 }
 
