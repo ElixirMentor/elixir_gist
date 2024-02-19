@@ -6,7 +6,9 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :elixir_gist, ElixirGistWeb.Endpoint,
+  url: [host: "https://elixir-gist.gigalixirapp.com/", scheme: "https", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  check_origin: ["https://elixir-gist.gigalixirapp.com/"],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Configures Swoosh API Client
