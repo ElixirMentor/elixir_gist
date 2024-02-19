@@ -24,48 +24,62 @@
     </div>
   </div>
 </div>
-
-<div class="justify-center px-28 w-full mb-10">
-  <div class="flex p-2 items-center justify-between bg-emDark rounded-t-md border">
-    <div class="w-[300px] pl-2 font-brand font-bold text-base text-emLavender-dark">
-      <%= @gist.name %>
-    </div>
-    <div>
-      <%= if @current_user.id == @gist.user_id do %>
+<div id="edit-section" style="display: none">
+  <.live_component
+    module={GistFormComponent}
+    id={@gist.id}
+    form={to_form(Gists.change_gist(@gist))}
+    current_user={@current_user}
+  />
+</div>
+<div id="syntax-section" style="display: block">
+  <div class="justify-center px-28 w-full mb-10">
+    <div class="flex p-2 items-center justify-between bg-emDark rounded-t-md border">
+      <div class="w-[300px] pl-2 font-brand font-bold text-base text-emLavender-dark">
+        <%= @gist.name %>
+      </div>
+      <div>
+        <%= if @current_user.id == @gist.user_id do %>
+          <button
+            class="px-1 interactive-img-btn"
+            type="button"
+            phx-click="delete"
+            phx-value-id={@gist.id}
+          >
+            <img src="/images/delete.svg" alt="Delete Button" />
+          </button>
+          <button
+            id="edit-btn"
+            class="px-1 interactive-img-btn"
+            type="button"
+            phx-hook="ToggleEdit"
+          >
+            <img src="/images/edit.svg" alt="Edit Button" />
+          </button>
+        <% end %>
         <button
+          id="copy-btn"
           class="px-1 interactive-img-btn"
           type="button"
-          phx-click="delete"
-          phx-value-id={@gist.id}
+          phx-hook="CopyToClipboard"
+          data-clipboard-gist={@gist.markup_text}
         >
-          <img src="/images/delete.svg" alt="Delete Button" />
+          <img src="/images/copy.svg" alt="Copy Button" />
         </button>
-        <button class="px-1 interactive-img-btn" type="button" phx-click={}>
-          <img src="/images/edit.svg" alt="Edit Button" />
-        </button>
-      <% end %>
-      <button
-        id="copy-btn"
-        class="px-1 interactive-img-btn"
-        type="button"
-        phx-hook="CopyToClipboard"
-        data-clipboard-gist={@gist.markup_text}
-      >
-        <img src="/images/copy.svg" alt="Copy Button" />
-      </button>
+      </div>
     </div>
-  </div>
-  <div id="gist-wrapper" class="flex w-full">
-    <textarea id="line-numbers" class="syntax-numbers rounded-bl-md" readonly></textarea>
-    <div
-      id="highlight"
-      class="syntax-area w-full rounded-br-md"
-      phx-hook="Highlight"
-      data-name={@gist.name}
-    >
-      <pre><code class="language-elixir">
+    <div id="gist-wrapper" class="flex w-full">
+      <textarea id="syntax-numbers" class="syntax-numbers rounded-bl-md" readonly></textarea>
+      <div
+        id="highlight"
+        class="syntax-area w-full rounded-br-md"
+        phx-hook="Highlight"
+        data-name={@gist.name}
+      >
+        <pre><code class="language-elixir">
     <%= @gist.markup_text %>
   </code></pre>
+      </div>
     </div>
   </div>
 </div>
