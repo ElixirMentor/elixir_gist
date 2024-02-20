@@ -23,5 +23,9 @@ config :swoosh, local: false
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :elixir_gist, ElixirGist.Mailer,
+  adapter: Swoosh.Adapters.Gmail,
+  access_token: {:system, System.get_env("GMAIL_API_ACCESS_TOKEN")}
+
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
