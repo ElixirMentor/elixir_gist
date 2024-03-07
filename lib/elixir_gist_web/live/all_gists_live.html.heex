@@ -1,0 +1,8 @@
+<div class="em-gradient flex items-center justify-center">
+  <h1 class="font-brand font-bold text-3xl text-white">
+    Search
+  </h1>
+</div>
+<%= for gist <- @gists do %>
+  <.gist gist={gist} current_user={@current_user} />
+<% end %>

@@ -42,6 +42,7 @@ let Hooks = {};
 Hooks.Highlight = {
     mounted() {
         let name = this.el.getAttribute("data-name");
+        let id = this.el.getAttribute("data-id");
         let codeBlock = this.el.querySelector("pre code");
 
         if (name && codeBlock) {
@@ -49,7 +50,7 @@ Hooks.Highlight = {
             codeBlock.classList.add(`language-${this.getSyntaxType(name)}`);
             trimmed = this.trimCodeBlock(codeBlock)
             hljs.highlightElement(trimmed);
-            updateLineNumbers(trimmed.textContent, "#syntax-numbers")
+            updateLineNumbers(trimmed.textContent, `#line-numbers-${id}`)
         }
     },
 

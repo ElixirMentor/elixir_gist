@@ -69,16 +69,18 @@
       </div>
     </div>
     <div id="gist-wrapper" class="flex w-full">
-      <textarea id="syntax-numbers" class="syntax-numbers rounded-bl-md" readonly></textarea>
+      <textarea id={"line-numbers-#{@gist.id}"} class="syntax-numbers rounded-bl-md" readonly>
+      </textarea>
       <div
-        id="highlight"
+        id={"highlight-#{@gist.id}"}
         class="syntax-area w-full rounded-br-md"
         phx-hook="Highlight"
         data-name={@gist.name}
+        data-id={@gist.id}
       >
         <pre><code class="language-elixir">
-    <%= @gist.markup_text %>
-  </code></pre>
+<%= @gist.markup_text %>
+</code></pre>
       </div>
     </div>
   </div>
