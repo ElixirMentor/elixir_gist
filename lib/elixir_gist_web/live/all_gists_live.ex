@@ -44,7 +44,7 @@ defmodule ElixirGistWeb.AllGistsLive do
             data-id={@gist.id}
           >
             <pre><code class="language-elixir">
-    <%= @gist.markup_text %>
+    <%= get_preview_text(@gist) %>
     </code></pre>
           </div>
         </div>
@@ -52,6 +52,18 @@ defmodule ElixirGistWeb.AllGistsLive do
     </div>
     """
   end
+
+  defp get_preview_text(gist) when not is_nil(gist.markup_text) do
+    lines = gist.markup_text |> String.split("\n")
+
+    if length(lines) > 10 do
+      (Enum.take(lines, 9) ++ ["..."]) |> Enum.join("\n")
+    else
+      Enum.join(lines, "\n")
+    end
+  end
+
+  defp get_preview_text(_gist), do: ""
 
   def handle_event("select", %{"id" => id}, socket) do
     {:noreply, push_navigate(socket, to: ~p"/gist?#{[id: id]}")}
