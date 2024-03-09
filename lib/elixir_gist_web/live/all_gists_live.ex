@@ -2,9 +2,22 @@ defmodule ElixirGistWeb.AllGistsLive do
   use ElixirGistWeb, :live_view
   alias ElixirGist.Gists
 
-  def mount(_, _, socket) do
-    gists = Gists.list_gists()
-    {:ok, assign(socket, gists: gists)}
+  def mount(_params, _uri, socket) do
+    {:ok, socket}
+  end
+
+  def handle_params(params, _uri, socket) do
+    page_number = Map.get(params, "page", "1") |> String.to_integer()
+    paginated_gists = Gists.paginate_gists(page_number)
+
+    socket =
+      assign(socket,
+        gists: paginated_gists.entries,
+        total_pages: paginated_gists.total_pages,
+        current_page: paginated_gists.page_number
+      )
+
+    {:noreply, socket}
   end
 
   def gist(assigns) do
@@ -67,5 +80,25 @@ defmodule ElixirGistWeb.AllGistsLive do
 
   def handle_event("select", %{"id" => id}, socket) do
     {:noreply, push_navigate(socket, to: ~p"/gist?#{[id: id]}")}
+  end
+
+  def handle_event("next", _params, socket) do
+    new_page = socket.assigns.current_page + 1
+
+    if new_page <= socket.assigns.total_pages do
+      {:noreply, push_patch(socket, to: ~p"/all?page=#{new_page}")}
+    else
+      {:noreply, socket}
+    end
+  end
+
+  def handle_event("prev", _params, socket) do
+    new_page = socket.assigns.current_page - 1
+
+    if new_page >= 1 do
+      {:noreply, push_patch(socket, to: ~p"/all?page=#{new_page}")}
+    else
+      {:noreply, socket}
+    end
   end
 end

@@ -6,7 +6,6 @@ defmodule ElixirGist.Gists do
   import Ecto.Query, warn: false
   alias ElixirGist.Accounts.User
   alias ElixirGist.Repo
-
   alias ElixirGist.Gists.Gist
 
   @doc """
@@ -22,6 +21,21 @@ defmodule ElixirGist.Gists do
     Gist
     |> order_by(desc: :updated_at)
     |> Repo.all()
+  end
+
+  @doc """
+  Paginates the list of gists.
+
+  ## Examples
+
+      iex> paginate_gists(1)
+      {%Scrivener.Page{entries: [%Gist{}, ...], page_number: 1, page_size: 10, total_entries: 100, total_pages: 10}, 10}
+
+  """
+  def paginate_gists(page_number \\ 1) do
+    Gist
+    |> order_by(desc: :updated_at)
+    |> Repo.paginate(page: page_number)
   end
 
   @doc """

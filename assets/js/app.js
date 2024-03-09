@@ -141,7 +141,13 @@ Hooks.ToggleEdit = {
             }
         })
     }
-}
+};
+
+Hooks.ScrollToTop = {
+    updated() {
+      window.scrollTo(0, 0);
+    }
+};
 
 Hooks.CurrentYear = {
     mounted() {

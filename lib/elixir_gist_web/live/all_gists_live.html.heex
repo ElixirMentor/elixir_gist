@@ -6,3 +6,26 @@
 <%= for gist <- @gists do %>
   <.gist gist={gist} current_user={@current_user} />
 <% end %>
+<div id="scroll-to-top" class="justify-between px-28 w-full" phx-hook="ScrollToTop">
+  <div class="flex justify-between items-center mx-10">
+    <button phx-click="prev" class="font-brand font-bold text-lg text-emLavender-dark">
+      &lt; PREV
+    </button>
+    <div>
+      <%= for page <- 1..@total_pages do %>
+        <%= if page == @current_page do %>
+          <span class="bg-emLavender-dark text-white rounded px-2 py-1">
+            <%= page %>
+          </span>
+        <% else %>
+          <span class="text-white px-2 py-1">
+            <%= page %>
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+    <button phx-click="next" class="font-brand font-bold text-lg text-emLavender-dark">
+      NEXT &gt;
+    </button>
+  </div>
+</div>
