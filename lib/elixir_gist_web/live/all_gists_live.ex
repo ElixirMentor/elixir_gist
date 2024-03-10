@@ -1,6 +1,6 @@
 defmodule ElixirGistWeb.AllGistsLive do
   use ElixirGistWeb, :live_view
-  alias ElixirGist.Gists
+  alias ElixirGist.{Gists, Utilities.DateTime}
 
   def mount(_params, _uri, socket) do
     {:ok, socket}
@@ -30,7 +30,9 @@ defmodule ElixirGistWeb.AllGistsLive do
             <div class="font-bold text-base text-emLavender-dark">
               <%= @current_user.email %><span class="text-white">/</span><%= @gist.name %>
             </div>
-            <div class="text-lg text-white font-bold"><%= @gist.updated_at %></div>
+            <div class="text-lg text-white font-bold">
+              <%= DateTime.get_relative_time(@gist.updated_at) %>
+            </div>
             <p class="text-sm text-white"><%= @gist.description %></p>
           </div>
         </div>
