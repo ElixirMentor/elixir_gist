@@ -6,26 +6,44 @@
 <%= for gist <- @gists do %>
   <.gist gist={gist} current_user={@current_user} />
 <% end %>
-<div id="scroll-to-top" class="justify-between px-28 w-full" phx-hook="ScrollToTop">
-  <div class="flex justify-between items-center mx-10">
-    <button phx-click="prev" class="font-brand font-bold text-lg text-emLavender-dark">
-      &lt; PREV
-    </button>
+<div
+  id="scroll-to-top"
+  class="justify-center px-28 w-full text-white font-brand font-bold"
+  phx-hook="ScrollToTop"
+>
+  <div class="flex justify-center items-center mx-10">
+    <%= if @current_page > 1 do %>
+      <button phx-click="prev" class="font-brand font-bold text-lg text-emLavender-dark px-4">
+        &lt; PREV
+      </button>
+    <% end %>
     <div>
-      <%= for page <- 1..@total_pages do %>
+      <%= if @current_page > 3 do %>
+        <button phx-click="page" phx-value-page="1" class="px-2 py-1">1</button><span class="px-2 py-1">...</span>
+      <% end %>
+      <%= for page <- Enum.max([1, @current_page - 2])..Enum.min([@total_pages, @current_page + 2]) do %>
         <%= if page == @current_page do %>
           <span class="bg-emLavender-dark text-white rounded px-2 py-1">
             <%= page %>
           </span>
         <% else %>
-          <span class="text-white px-2 py-1">
+          <button phx-click="page" phx-value-page={page} class="px-2 py-1">
             <%= page %>
-          </span>
+          </button>
         <% end %>
       <% end %>
+      <%= if @current_page < @total_pages - 2 do %>
+        <span class="px-2 py-1">...</span><button
+          phx-click="page"
+          phx-value-page={@total_pages}
+          class="px-2 py-1"
+        ><%= @total_pages %></button>
+      <% end %>
     </div>
-    <button phx-click="next" class="font-brand font-bold text-lg text-emLavender-dark">
-      NEXT &gt;
-    </button>
+    <%= if @current_page < @total_pages do %>
+      <button phx-click="next" class="font-brand font-bold text-lg text-emLavender-dark px-4">
+        NEXT &gt;
+      </button>
+    <% end %>
   </div>
 </div>

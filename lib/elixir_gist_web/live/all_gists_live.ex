@@ -82,6 +82,10 @@ defmodule ElixirGistWeb.AllGistsLive do
     {:noreply, push_navigate(socket, to: ~p"/gist?#{[id: id]}")}
   end
 
+  def handle_event("page", %{"page" => page}, socket) do
+    {:noreply, push_patch(socket, to: ~p"/all?page=#{page}")}
+  end
+
   def handle_event("next", _params, socket) do
     new_page = socket.assigns.current_page + 1
 
