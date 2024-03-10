@@ -11,7 +11,7 @@
           <%= @current_user.email %><span class="text-white">/</span><%= @gist.name %>
         </div>
         <div class="text-lg text-white font-bold">
-          <%= DateTime.get_relative_time(@gist.updated_at) %>
+          <%= DateFormat.get_relative_time(@gist.updated_at) %>
         </div>
         <p class="text-left text-sm text-white font-brand"><%= @gist.description %></p>
       </div>

@@ -1,7 +1,7 @@
 defmodule ElixirGistWeb.GistLive do
   use ElixirGistWeb, :live_view
 
-  alias ElixirGist.{Gists, Utilities.DateTime}
+  alias ElixirGist.{Gists, Utilities.DateFormat}
   alias ElixirGistWeb.GistFormComponent
 
   def mount(%{"id" => id}, _session, socket) do

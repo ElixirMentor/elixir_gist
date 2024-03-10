@@ -1,6 +1,6 @@
 <div class="em-gradient flex items-center justify-center">
   <h1 class="font-brand font-bold text-3xl text-white">
-    Search
+    All Gists
   </h1>
 </div>
 <%= for gist <- @gists do %>
@@ -18,26 +18,40 @@
       </button>
     <% end %>
     <div>
-      <%= if @current_page > 3 do %>
-        <button phx-click="page" phx-value-page="1" class="px-2 py-1">1</button><span class="px-2 py-1">...</span>
-      <% end %>
-      <%= for page <- Enum.max([1, @current_page - 2])..Enum.min([@total_pages, @current_page + 2]) do %>
-        <%= if page == @current_page do %>
-          <span class="bg-emLavender-dark text-white rounded px-2 py-1">
-            <%= page %>
-          </span>
-        <% else %>
-          <button phx-click="page" phx-value-page={page} class="px-2 py-1">
-            <%= page %>
-          </button>
+      <%= if @total_pages >= 12 do %>
+        <%= if @current_page > 1 do %>
+          <button phx-click="page" phx-value-page="1" class="px-2 py-1">1</button><span class="px-2 py-1">...</span>
         <% end %>
-      <% end %>
-      <%= if @current_page < @total_pages - 2 do %>
-        <span class="px-2 py-1">...</span><button
-          phx-click="page"
-          phx-value-page={@total_pages}
-          class="px-2 py-1"
-        ><%= @total_pages %></button>
+        <%= for page <- Enum.max([1, @current_page - 5])..Enum.min([@total_pages, @current_page + 4]) do %>
+          <%= if page == @current_page do %>
+            <span class="bg-emLavender-dark text-white rounded px-2 py-1">
+              <%= page %>
+            </span>
+          <% else %>
+            <button phx-click="page" phx-value-page={page} class="px-2 py-1">
+              <%= page %>
+            </button>
+          <% end %>
+        <% end %>
+        <%= if @current_page < @total_pages do %>
+          <span class="px-2 py-1">...</span><button
+            phx-click="page"
+            phx-value-page={@total_pages}
+            class="px-2 py-1"
+          ><%= @total_pages %></button>
+        <% end %>
+      <% else %>
+        <%= for page <- 1..@total_pages do %>
+          <%= if page == @current_page do %>
+            <span class="bg-emLavender-dark text-white rounded px-2 py-1">
+              <%= page %>
+            </span>
+          <% else %>
+            <button phx-click="page" phx-value-page={page} class="px-2 py-1">
+              <%= page %>
+            </button>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
     <%= if @current_page < @total_pages do %>
