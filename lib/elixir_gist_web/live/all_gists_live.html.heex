@@ -14,7 +14,7 @@
   <div class="flex justify-center items-center mx-10">
     <%= if @current_page > 1 do %>
       <button phx-click="prev" class="font-brand font-bold text-lg text-emLavender-dark px-4">
-        &lt; PREV
+        &lt; Previous
       </button>
     <% end %>
     <div>
@@ -56,7 +56,7 @@
     </div>
     <%= if @current_page < @total_pages do %>
       <button phx-click="next" class="font-brand font-bold text-lg text-emLavender-dark px-4">
-        NEXT &gt;
+        Next &gt;
       </button>
     <% end %>
   </div>

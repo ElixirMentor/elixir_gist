@@ -5,7 +5,7 @@ defmodule ElixirGistWeb.AllGistsLive do
   def mount(_params, _uri, socket) do
     {:ok, socket}
   end
-
+  
   def handle_params(params, _uri, socket) do
     page_number = Map.get(params, "page", "1") |> String.to_integer()
     paginated_gists = Gists.paginate_gists(page_number)
