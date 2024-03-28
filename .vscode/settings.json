@@ -16,5 +16,8 @@
     "[phoenix-heex]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "JakeBecker.elixir-ls"
-    }
+    },
+    "editor.fontSize": 10,
+    "window.zoomLevel": 0,
+    "editor.accessibilityPageSize": 12
 }
