@@ -13,6 +13,7 @@ defmodule ElixirGistWeb.GistFormComponent do
     <div>
       <.form for={@form} phx-submit="create" phx-change="validate" phx-target={@myself}>
         <div class="justify-center px-28 w-full space-y-4 mb-10">
+          <%= hidden_input(@form, :id, value: @id) %>
           <.input
             field={@form[:description]}
             placeholder="Gist description.."
@@ -68,7 +69,7 @@ defmodule ElixirGistWeb.GistFormComponent do
   end
 
   def handle_event("create", %{"gist" => params}, socket) do
-    if is_nil(params["id"]) do
+    if params["id"] == "new" do
       create_gist(params, socket)
     else
       update_gist(params, socket)
@@ -91,7 +92,7 @@ defmodule ElixirGistWeb.GistFormComponent do
   defp update_gist(params, socket) do
     case Gists.update_gist(socket.assigns.current_user, params) do
       {:ok, gist} ->
-        {:noreply, push_patch(socket, to: ~p"/gist?#{[id: gist]}")}
+        {:noreply, push_navigate(socket, to: ~p"/gist?#{[id: gist]}")}
 
       {:error, message} ->
         socket = put_flash(socket, :error, message)
