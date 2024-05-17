@@ -68,6 +68,7 @@ defmodule ElixirGistWeb.Router do
       on_mount: [{ElixirGistWeb.UserAuth, :ensure_authenticated}] do
       live "/create", CreateGistLive
       live "/gist", GistLive
+      live "/all", AllGistsLive
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
     end
