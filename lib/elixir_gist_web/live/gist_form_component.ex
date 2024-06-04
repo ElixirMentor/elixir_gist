@@ -1,6 +1,5 @@
 defmodule ElixirGistWeb.GistFormComponent do
   use ElixirGistWeb, :live_component
-  import Phoenix.HTML.Form
 
   alias ElixirGist.{Gists, Gists.Gist}
 
@@ -13,7 +12,7 @@ defmodule ElixirGistWeb.GistFormComponent do
     <div>
       <.form for={@form} phx-submit="create" phx-change="validate" phx-target={@myself}>
         <div class="justify-center px-28 w-full space-y-4 mb-10">
-          <%= hidden_input(@form, :id, value: @id) %>
+          <.input type="hidden" field={@form[:id]} value={@id} />
           <.input
             field={@form[:description]}
             placeholder="Gist description.."
@@ -35,15 +34,17 @@ defmodule ElixirGistWeb.GistFormComponent do
               <textarea id="line-numbers" class="line-numbers rounded-bl-md" readonly>
           <%= "1\n" %>
         </textarea>
-              <%= textarea(@form, :markup_text,
-                id: "gist-textarea",
-                phx_hook: "UpdateLineNumbers",
-                class: "textarea w-full rounded-br-md",
-                placeholder: "Insert code...",
-                spellcheck: "false",
-                autocomplete: "off",
-                phx_debounce: "blur"
-              ) %>
+              <div class="flex-grow">
+                <.input
+                  type="textarea"
+                  field={@form[:markup_text]}
+                  class="textarea w-full rounded-br-md"
+                  placeholder="Insert code..."
+                  autocomplete="off"
+                  phx-debounce="blur"
+                  phx-hook="UpdateLineNumbers"
+                />
+              </div>
             </div>
           </div>
           <div class="flex justify-end">
