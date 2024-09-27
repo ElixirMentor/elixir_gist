@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :elixir_gist, ElixirGist.Repo,
-  username: "backend_stuff",
-  password: "blork_erlang",
+  username: "postgres",
+  password: "postgres",
   hostname: "localhost",
   database: "elixir_gist_dev",
   stacktrace: true,
